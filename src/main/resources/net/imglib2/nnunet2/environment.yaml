@@ -1,0 +1,15 @@
+name: nnunet2-appose
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.11
+  - pip
+
+  - pip:
+      - torch	  
+      - torchvision
+      - nnunetv2
+      - appose
+
