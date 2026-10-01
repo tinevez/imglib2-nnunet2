@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.scijava</groupId>
+		<artifactId>pom-scijava</artifactId>
+		<version>45.1.0</version>
+		<relativePath />
+	</parent>
+
+	<groupId>net.imglib2</groupId>
+	<artifactId>imglib2-nnunet2</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<name>ImgLib2 nnunet2</name>
+	<description>Running nnunet2 from Java with Appose.</description>
+	<url>https://imglib2.net/</url>
+	<inceptionYear>2026</inceptionYear>
+	<organization>
+		<name>ImgLib2</name>
+		<url>https://imglib2.net/</url>
+	</organization>
+	<licenses>
+		<license>
+			<name>BSD-3-clause</name>
+			<url>https://opensource.org/license/bsd-3-clause/</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<id>tinevez</id>
+			<name>Jean-Yves Tinevez</name>
+			<url>https://imagej.net/people/tinevez</url>
+			<roles>
+				<role>lead</role>
+				<role>developer</role>
+				<role>debugger</role>
+				<role>reviewer</role>
+				<role>support</role>
+				<role>maintainer</role>
+			</roles>
+		</developer>
+	</developers>
+	<contributors>
+		<contributor>
+			<name>Emeline Fratacci</name>
+			<url>https://research.pasteur.fr/fr/member/emeline-fratacci/</url>
+			<properties><id>EmelineFRATACCI</id></properties>
+		</contributor>
+	</contributors>
+
+	<mailingLists>
+		<mailingList>
+			<name>Image.sc Forum</name>
+			<archive>https://forum.image.sc/</archive>
+		</mailingList>
+	</mailingLists>
+
+	<scm>
+		<connection>scm:git:https://github.com/imglib/imglib2-nnunet2</connection>
+		<developerConnection>scm:git:git@github.com:imglib/imglib2-nnunet2</developerConnection>
+		<tag>HEAD</tag>
+		<url>https://github.com/imglib/imglib2-nnunet2</url>
+	</scm>
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/imglib/imglib2-nnunet2/issues</url>
+	</issueManagement>
+	<ciManagement>
+		<system>GitHub Actions</system>
+		<url>https://github.com/imglib/imglib2-nnunet2/actions</url>
+	</ciManagement>
+
+	<properties>
+		<package-name>net.imglib2.nnunet2</package-name>
+		<main-class>net.imglib2.nnunet2.nnunet2</main-class>
+		<license.licenseName>bsd_3</license.licenseName>
+		<license.copyrightOwners>Appose developpers</license.copyrightOwners>
+
+		<!-- Use Java 21. -->
+		<scijava.jvm.version>21</scijava.jvm.version>
+		<scijava.jvm.build.version>[21,)</scijava.jvm.build.version>
+
+		<appose.version>0.12.0</appose.version>
+		<imglib2-appose.version>0.10.0-SNAPSHOT</imglib2-appose.version>
+
+		<!-- NB: Deploy releases to the SciJava Maven repository. -->
+		<releaseProfiles>sign,deploy-to-scijava</releaseProfiles>
+	</properties>
+
+	<dependencies>
+
+		<!-- Appose dependencies -->
+		<dependency>
+			<groupId>org.apposed</groupId>
+			<artifactId>appose</artifactId>
+			<version>${appose.version}</version>
+		</dependency>
+
+		<!-- ImgLib2 dependencies -->
+		<dependency>
+			<groupId>net.imglib2</groupId>
+			<artifactId>imglib2</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>net.imglib2</groupId>
+			<artifactId>imglib2-appose</artifactId>
+			<version>${imglib2-appose.version}</version>
+		</dependency>
+
+		<!-- Other dependencies -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+		</dependency>
+
+		<!-- Test dependencies -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.imagej</groupId>
+			<artifactId>ij</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.imglib2</groupId>
+			<artifactId>imglib2-ij</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>scijava.public</id>
+			<url>https://maven.scijava.org/content/groups/public</url>
+		</repository>
+	</repositories>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<excludes>
+					<exclude>__pycache__/*</exclude>
+					<exclude>.pixi/**</exclude>
+					<exclude>.mypy_cache</exclude>
+				</excludes>
+			</resource>
+		</resources>
+	</build>
+</project>
